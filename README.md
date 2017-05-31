@@ -127,7 +127,7 @@ Python has extensive libraries for Scientific Analysis and Computation.
   - RNASEQ: Compute RNA Sequences using Python.
 
 # Resources, Useful Links, and Sources
-Main Documentation: https://docs.python.org/3/
-Tutorials: https://www.learnpython.org/
-Concise Overview of Python: https://learnxinyminutes.com/docs/python/
-Popular Libraries: https://pythontips.com/2013/07/30/20-python-libraries-you-cant-live-without/
+- Main Documentation: https://docs.python.org/3/
+- Tutorials: https://www.learnpython.org/
+- Concise Overview of Python: https://learnxinyminutes.com/docs/python/
+- Popular Libraries: https://pythontips.com/2013/07/30/20-python-libraries-you-cant-live-without/
