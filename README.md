@@ -1,5 +1,5 @@
 # python_0x65 (Python 101)
-Welcome to Python 0x5 (Python 101) lesson for going from 0 to 101 in programming in Python.
+Welcome to Python 0x65 (Python 101), a guided lesson for going from 0 to 101 in programming in Python.
 
 We will be learning the basics of Python 3. This lesson will take about 2 hours. We'll cover absolute basics up through file reading. By the end, you’ll be a pro in the fundamentals of Python! 
 
