@@ -7,7 +7,7 @@ We will be learning the basics of Python 3. This lesson will take about 2 hours.
 - [Installing Python](#installing-python)
 - [The Command Line](#the-command-line)
 - [The Python Interpreter](#the-python-interpreter)
-- Programming Fundamentals(#programming-fundamentals)
+- [Programming Fundamentals](#programming-fundamentals)
   - Expressions
   - Variables
   - Conditionals
