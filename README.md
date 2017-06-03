@@ -20,16 +20,22 @@ We will be learning the basics of Python 3. This lesson will take about 2 hours.
 - [Resources, Useful Links, and Sources](#resources-useful-links-and-sources)
 
 # Installing Python
-1. Go to https://www.python.org/
-2. Go to Downloads: https://www.python.org/downloads/
+1. Go to <https://www.python.org/>
+2. Go to Downloads: <https://www.python.org/downloads/>
 3. Download the latest version of Python (Currently Python 3).
   - This is also often referred to as Python 3.x. Python 2.x is an earlier version that is very popular but is being phased out over time. There are a few [key differences and breaking changes](http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html) between Python 2 and Python 3.
   - Python 2 is still commonly supported for legacy applications and libraries. Even so, at this point [it's best to start with Python 3](http://www.asmeurer.com/blog/posts/moving-away-from-python-2/), since [almost all libraries support Python 3](http://py3readiness.org/).
 
 # The Command Line
-The command line is where the real work gets done. It is the window for a programmer to access the heart of a computer.
+The command line is the window for a programmer to access the heart of a computer.
 
-The Command Line is a CLI (Command Line Interface) as opposed to a GUI (Graphical User Interface). Typing will get you everywhere. Your mouse pointer won't help you here.
+The Command Line is a CLI (Command Line Interface) as opposed to a GUI (Graphical User Interface). We'll be typing commands and sending that command to the shell by hitting the Enter/Return key.
+
+Try it now by typing in (remember to hit enter to send the command!)
+```shell
+echo "Programming is really cool, wow!"
+```
+See that
 
 ## Getting around
 Here are some absolutely essential
@@ -41,19 +47,47 @@ Here are some absolutely essential
 - `man`: "Manual"
 
 # The Python Interpreter
-Let's boot up python! In your command line enter `python3` if you're Unix, or `py` if you're Windows.
-When the Python interpreter boots up, it should output some starting information for you.
+Let's boot up python! Python can either interpret new commands one the fly or run scripts you've already written.
+  - Writing commands on the fly in the interpreter is great for experimentation and prototyping new stuff.
+  - Running pre-written scripts is much faster and easier to re-run the same funcionality. You don't have to type in the same thing twice!
 
-```
+Let's start with writing some commands on the fly with the Pyhon Intepreter, which from now on we'll just call "the interpreter".
+
+## Starting the Interpreter
+We'll start the interpreter in *the shell*, which depends on which operating system you're on.
+
+In your command line enter `python3` if you're Unix, or `py` if you're Windows.
+When the Python interpreter boots up, it should output some starting information for you. See the following Unix and Windows examples for what to expect.
+
+### Unix (Mac Terminal, `BASH` Shell)
+```shell
 george@testers-MBP:~$ python3
 Python 3.6.1 (v3.6.1:69c0db5050, Mar 21 2017, 01:21:04)
 [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
+### Windows (Command Prompt)
+```shell
+Windows PowerShell
+Copyright (C) 2016 Microsoft Corporation. All rights reserved.
+
+PS C:\Users\George> py
+Python 2.7.13 (v2.7.13:a06454b1afa1, Dec 17 2016, 20:53:40) [MSC v.1500 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> quit()
+PS C:\Users\George> # Notice that it defaulted to python 2 if you have both installed. Oops! Let's do Python 3 instead.
+PS C:\Users\George> py -3
+Python 3.5.1 (v3.5.1:37a07cee5969, Dec  6 2015, 01:38:48) [MSC v.1900 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+
+
+
 
 ## How do I exit the interpreter?
-In order to `quit()` the interpreter, at the command prompt, type
+If you're in the interpreter and you want to get out, use the Python `quit()` function and hit enter.
 ```
 >>> quit()
 ```
