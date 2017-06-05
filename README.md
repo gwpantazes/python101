@@ -99,7 +99,7 @@ Here are some absolutely essential CLI commands we'll be using.
     - In practice, used for output to the screen, such as printing a whole file. `echo` doesn't print the contents of files, so instead we use `cat` for file output.
     - Try it:
         ```shell
-        george@testers-MacBook-Pro:~/msc/python_0x65/command_line$ cat "PEP 20 -- The Zen of Python"
+        george@testers-MacBook-Pro:~/msc/python101/sandbox$ cat "PEP 20 -- The Zen of Python"
         The Zen of Python
 
         Beautiful is better than ugly.
@@ -142,20 +142,20 @@ Here are some absolutely essential CLI commands we'll be using.
          ...
         ```
         - ***To exit*** Press `q` to exit the manual.
-    - Sometimes there's no man page. Check if the program has it's own `-h` or `--help` flag.
+    - Sometimes there's no man page. The command may have it's own `-h` or `--help` flag. Or you may have to Google for the documentation.
 ### Getting Around
 - `pwd`: "Print Working Directory"
     - Outputs where you currently are
     - Try it:
         ```shell
-        george@testers-MBP:~/python101/command_line$ pwd
-        /Users/george/python101/command_line
+        george@testers-MBP:~/python101/sandbox$ pwd
+        /Users/george/python101/sandbox
         ```
 - `ls`: "List Segments" or more colloquially, just "list"
     - Shows contents of the current directory or given directory as argument
     - Try it:
         ```shell
-        george@testers-MBP:~/python101/command_line$ ls
+        george@testers-MBP:~/python101/sandbox$ ls
         dir1/      dir2/      file1.txt  file2.txt  file3.txt
         ```
 - `cd`: "Change Directory"
@@ -163,15 +163,15 @@ Here are some absolutely essential CLI commands we'll be using.
     - Given an absolute or relative directory, go to that directory
     - Try it:
         ```shell
-        george@testers-MBP:~/python101/command_line$ cd dir1
-        george@testers-MBP:~/python101/command_line/dir1$ ls
+        george@testers-MBP:~/python101/sandbox$ cd dir1
+        george@testers-MBP:~/python101/sandbox/dir1$ ls
         subdir1/ subdir2/
         ```
     - Let's return to the home directory by providing no argument:
         ```shell
-        george@testers-MBP:~/python101/command_line/dir1$ pwd
-        /Users/george/python101/command_line/dir1
-        george@testers-MBP:~/python101/command_line/dir1$ cd
+        george@testers-MBP:~/python101/sandbox/dir1$ pwd
+        /Users/george/python101/sandbox/dir1
+        george@testers-MBP:~/python101/sandbox/dir1$ cd
         george@testers-MBP:~$ pwd
         /Users/george
         george@testers-MBP:~$
@@ -179,8 +179,8 @@ Here are some absolutely essential CLI commands we'll be using.
 
 - Extra credit for the curious:
     - `env`: Display all environment variables
-    - `compgen`: Can display available commands. See `help`.
-    - And of course, Google it if you don't know!
+    - `compgen`: Can display available commands. This is an example of a command with a `man` page, so look up the documentation for this on Google!
+    - Searching Google for the answer is an essential tool.
 
 # The Python Interpreter
 Let's boot up python! Python can either interpret new commands one the fly or run scripts you've already written.
@@ -218,9 +218,6 @@ Python 3.5.1 (v3.5.1:37a07cee5969, Dec  6 2015, 01:38:48) [MSC v.1900 32 bit (In
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
-
-
-
 
 ## How do I exit the interpreter?
 If you're in the interpreter and you want to get out, use the Python `quit()` function and hit enter.
@@ -318,11 +315,45 @@ https://pyformat.info/
 
 ## Reading from a file
 https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files
+```python
+>>> with open("data/biopsy.csv") as datafile:
+...     datafile.read()
+...
+'"","ID","V1","V2","V3","V4","V5","V6","V7","V8","V9","class"\n"1","1000025",5,1,1,1,2,1,3,1,1,"benign"\n"2","1002945",5,4,4,5,7,10,3,2,1,"benign"\n
+... # Output truncated
+```
 
-## String slicing
+Reading the file like that. Let's just do one line at a time.
+```python
+>>> with open("data/biopsy.csv") as datafile:
+...     for i in range(4):
+...             datafile.readline()
+...
+'"","ID","V1","V2","V3","V4","V5","V6","V7","V8","V9","class"\n'
+'"1","1000025",5,1,1,1,2,1,3,1,1,"benign"\n'
+'"2","1002945",5,4,4,5,7,10,3,2,1,"benign"\n'
+'"3","1015425",3,1,1,1,2,2,3,1,1,"benign"\n'
+```
+Notice that the newline character `\n` is kept in each line. Python detects that character as the end of a line, but leaves it for you to strip off yourself.
+
+## Slicing Lists and Strings
 
 ## Reading a CSV File
 https://docs.python.org/3.6/library/csv.html
+
+```python
+>>> import csv
+>>> with open("data/biopsy.csv") as csvfile:
+...     reader = csv.reader(csvfile)
+...     for row in reader:
+...             print(row)
+...
+['', 'ID', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'class']
+['1', '1000025', '5', '1', '1', '1', '2', '1', '3', '1', '1', 'benign']
+['2', '1002945', '5', '4', '4', '5', '7', '10', '3', '2', '1', 'benign']
+['3', '1015425', '3', '1', '1', '1', '2', '2', '3', '1', '1', 'benign']
+... # Output truncated
+```
 
 # Let's Make Something
 Now that we know how to do lots of cool things, let's program something real. Let's make a program which reads data from a CSV file and computes values from it.
