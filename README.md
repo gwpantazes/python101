@@ -83,7 +83,7 @@ Good job! You just ran a shell command very similar to how we'll be running Pyth
 
 ## Common Commands
 Here are some absolutely essential CLI commands we'll be using.
-- `echo`: Print to the command line
+- `echo`: Print/output to the command line
     - Try it:
         ```shell
         george@testers-MBP:~$ echo "Home Directory: $HOME"
@@ -94,6 +94,35 @@ Here are some absolutely essential CLI commands we'll be using.
         george@testers-MacBook-Pro:~$ echo "PATH variable: $PATH"
         PATH variable: /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/george/Library/Android/sdk/build-tools:/Users/george/Library/Android/sdk/platform-tools:/Users/george/Library/Android/sdk/tools:/usr/local/share/npm/bin/:/Users/george/.rvm/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin
         ```
+- `cat`: Short for "Concatenate"
+    - View contents of a file, create single or multiple files, concatenate files, and redirect output in terminal or files
+    - In practice, used for output to the screen, such as printing a whole file. `echo` doesn't print the contents of files, so instead we use `cat` for file output.
+    - Try it:
+        ```shell
+        george@testers-MacBook-Pro:~/msc/python_0x65/command_line$ cat "PEP 20 -- The Zen of Python"
+        The Zen of Python
+
+        Beautiful is better than ugly.
+        Explicit is better than implicit.
+        Simple is better than complex.
+        Complex is better than complicated.
+        Flat is better than nested.
+        Sparse is better than dense.
+        Readability counts.
+        Special cases aren't special enough to break the rules.
+        Although practicality beats purity.
+        Errors should never pass silently.
+        Unless explicitly silenced.
+        In the face of ambiguity, refuse the temptation to guess.
+        There should be one-- and preferably only one --obvious way to do it.
+        Although that way may not be obvious at first unless you're Dutch.
+        Now is better than never.
+        Although never is often better than *right* now.
+        If the implementation is hard to explain, it's a bad idea.
+        If the implementation is easy to explain, it may be a good idea.
+        Namespaces are one honking great idea -- let's do more of those!
+        ```
+
 - `man`: "Manual"
     - Shows manual documentation for the command given as an argument.
     - Try it:
