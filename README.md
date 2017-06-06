@@ -47,6 +47,7 @@ See the [Where to go from here?](#where-to-go-from-here) for some inspiration.
 
 ### Why should I use Python vs a spreadsheet application like Excel?
 Let's address a common question: Why should I use Pyhon? Why wouldn't I just use Excel?
+
 ***The answer***: Don't stop using Excel! Pyhon is just a tool. We can use both for their strong points.
 
 Python is a tool that can help solve problems of scale, automation and utility, and other pain points that might come along with large or complex datasets.
@@ -75,31 +76,90 @@ Instead of a GUI, the Command Line is a CLI (Command Line Interface). We'll be t
 
 ***Try it:*** Type in the following command into the command line
 ```shell
-echo "Programming is really cool, wow!"
+echo 'Programming is really cool, wow!'
 ```
 Hit the Enter/Return key on the keyboard to send the command to the shell. You should observe the text being output right back at you.
 
+```shell
+george@testers-MacBook-Pro:~$ echo 'Programming is really cool, wow!'
+Programming is really cool, wow!
+```
+
 Good job! You just ran a shell command very similar to how we'll be running Python scripts.
+
+> **Note**:  We used single quotes, which prevent variable expansion, to let us type the exclamation mark `!` which has special meaning in the shell. Typically we'd want to use double quotes to let us do variable expansion like `echo "${USER}"`.
 
 ## Common Commands
 Here are some absolutely essential CLI commands we'll be using.
 - `echo`: Print/output to the command line
-    - Try it:
+    - ***Try it:***
         ```shell
-        george@testers-MBP:~$ echo "Home Directory: $HOME"
+        george@testers-MacBook-Pro:~$ echo "User: $USER"
+        User: george
+        george@testers-MacBook-Pro:~$ echo "Home Directory: $HOME"
         Home Directory: /Users/george
-        ```
-    - Try another:
-        ```shell
         george@testers-MacBook-Pro:~$ echo "PATH variable: $PATH"
         PATH variable: /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/george/Library/Android/sdk/build-tools:/Users/george/Library/Android/sdk/platform-tools:/Users/george/Library/Android/sdk/tools:/usr/local/share/npm/bin/:/Users/george/.rvm/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin
+        ```
+- `pwd`: "Print Working Directory"
+    - Output the current working directory of the shell (where you currently are)
+    - ***Try it:***
+        ```shell
+        george@testers-MacBook-Pro:~$ pwd
+        /Users/george
+        george@testers-MacBook-Pro:~$ cd python101/
+        george@testers-MacBook-Pro:~/python101$ pwd
+        /Users/george/python101
+        ```
+    - Your current working directory will be printed in every one of your command prompts, making `pwd` redundant.
+        - Within the prompt, you can find your current directory in between the `:` colon and the `$` dollar sign.
+        - The `~` tilde character in your prompt is exactly equivalent to `$HOME`.
+        - For example, in this prompt we can see we are in `python101` within the `$HOME` directory: `george@testers-MacBook-Pro:~/python101$`
+- `ls`: "List Segments" or more colloquially, just "list"
+    - Show contents of a directory. With no arguments, `ls` will output the current working directory's contents.
+    - ***Try it:***
+        ```shell
+        george@testers-MacBook-Pro:~/python101$ ls
+        LICENSE    README.md  code/      data/      sandbox/
+        george@testers-MacBook-Pro:~/python101$ ls sandbox/
+        PEP20.txt     dir1/         dir2/         learnxiny.py  lorem.txt
+        ```
+- `cd`: "Change Directory"
+    - Change the working directory by providing a relative or absolute path.
+        - A *relative path* is based off of the current working directory, while an *absolute path* is based off the entire file system from the root of your computer. An example for `subdir1`:
+            - Absolute Path: `/Users/george/python101/sandbox/dir1/subdir1`
+            - Relative Path: With a working directory of `/Users/george/python101/`, a relative path to `subdir1` would be `sandbox/dir1/subdir1/`
+
+                > **Note:** A trailing slash `/` means an item is definitely a directory, not a file (files cannot have a trailing slash). The trailing slash is optional.
+
+            - In order to go upwards in the directory structure, `..` (two periods) means "*parent directory*".
+
+    - ***Try it:***
+        ```shell
+        george@testers-MacBook-Pro:~/python101$ cd sandbox
+        george@testers-MacBook-Pro:~/python101/sandbox$ ls
+        PEP20.txt     dir1/         dir2/         learnxiny.py  lorem.txt
+        george@testers-MacBook-Pro:~/python101/sandbox$ ls dir1
+        subdir1/ subdir2/
+        george@testers-MacBook-Pro:~/python101/sandbox$ cd dir1/subdir1
+        george@testers-MacBook-Pro:~/python101/sandbox/dir1/subdir1$ cd ..
+        george@testers-MacBook-Pro:~/python101/sandbox/dir1$ cd ../..
+        george@testers-MacBook-Pro:~/python101$
+        ```
+    - Given no argument, `cd` will return to the `$HOME` directory.
+    ***Try it:***
+        ```shell
+        george@testers-MacBook-Pro:~/python101$ cd
+        george@testers-MacBook-Pro:~$
         ```
 - `cat`: Short for "Concatenate"
     - View contents of a file, create single or multiple files, concatenate files, and redirect output in terminal or files
     - In practice, used for output to the screen, such as printing a whole file. `echo` doesn't print the contents of files, so instead we use `cat` for file output.
-    - Try it:
+    - ***Try it:***
         ```shell
-        george@testers-MacBook-Pro:~/msc/python101/sandbox$ cat "PEP 20 -- The Zen of Python"
+        george@testers-MacBook-Pro:~/python101/sandbox$ ls
+        PEP20.txt     dir1/         dir2/         learnxiny.py  lorem.txt
+        george@testers-MacBook-Pro:~/python101/sandbox$ cat PEP20.txt
         The Zen of Python
 
         Beautiful is better than ugly.
@@ -123,9 +183,12 @@ Here are some absolutely essential CLI commands we'll be using.
         Namespaces are one honking great idea -- let's do more of those!
         ```
 
+    - `head` and `tail` commands print out files just like cat, but only output the first few lines or the last few lines respectively.
+
 - `man`: "Manual"
-    - Shows manual documentation for the command given as an argument.
-    - Try it:
+    - Show manual documentation for the command given as an argument.
+    - ***To exit:*** Once in the manual, press `q` to exit the manual.
+    - ***Try it:***
         ```shell
         george@testers-MacBook-Pro:~$ man echo
         ECHO(1)                   BSD General Commands Manual                  ECHO(1)
@@ -141,45 +204,12 @@ Here are some absolutely essential CLI commands we'll be using.
              acters and followed by a newline (`\n') character, to the standard output.
          ...
         ```
-        - ***To exit*** Press `q` to exit the manual.
     - Sometimes there's no man page. The command may have it's own `-h` or `--help` flag. Or you may have to Google for the documentation.
-### Getting Around
-- `pwd`: "Print Working Directory"
-    - Outputs where you currently are
-    - Try it:
-        ```shell
-        george@testers-MBP:~/python101/sandbox$ pwd
-        /Users/george/python101/sandbox
-        ```
-- `ls`: "List Segments" or more colloquially, just "list"
-    - Shows contents of the current directory or given directory as argument
-    - Try it:
-        ```shell
-        george@testers-MBP:~/python101/sandbox$ ls
-        dir1/      dir2/      file1.txt  file2.txt  file3.txt
-        ```
-- `cd`: "Change Directory"
-    - Given no arguments, return to `$HOME`
-    - Given an absolute or relative directory, go to that directory
-    - Try it:
-        ```shell
-        george@testers-MBP:~/python101/sandbox$ cd dir1
-        george@testers-MBP:~/python101/sandbox/dir1$ ls
-        subdir1/ subdir2/
-        ```
-    - Let's return to the home directory by providing no argument:
-        ```shell
-        george@testers-MBP:~/python101/sandbox/dir1$ pwd
-        /Users/george/python101/sandbox/dir1
-        george@testers-MBP:~/python101/sandbox/dir1$ cd
-        george@testers-MBP:~$ pwd
-        /Users/george
-        george@testers-MBP:~$
-        ```
 
 - Extra credit for the curious:
     - `env`: Display all environment variables
-    - `compgen`: Can display available commands. This is an example of a command with a `man` page, so look up the documentation for this on Google!
+    - `compgen`: Can display available commands.
+        - This is an example of a command without a `man` page, so look up the documentation for this on Google!
     - Searching Google for the answer is an essential tool.
 
 # The Python Interpreter
@@ -197,7 +227,7 @@ When the Python interpreter boots up, it should output some starting information
 
 ### Unix (Mac Terminal, `BASH` Shell)
 ```shell
-george@testers-MBP:~$ python3
+george@testers-MacBook-Pro:~$ python3
 Python 3.6.1 (v3.6.1:69c0db5050, Mar 21 2017, 01:21:04)
 [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
