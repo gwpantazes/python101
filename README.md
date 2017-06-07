@@ -7,7 +7,8 @@ This lesson can be found on Github at <https://github.com/gwpantazes/python101>.
 
 # Table of Contents
 - [Overview](#overview)
-- [Installing Python](#installing-python)
+- [Setup and Materials](#setup-and-materials)
+    - [Installing Python](#installing-python)
 - [The Command Line](#the-command-line)
 - [The Python Interpreter](#the-python-interpreter)
 - [Programming Fundamentals](#programming-fundamentals)
@@ -25,9 +26,6 @@ This lesson can be found on Github at <https://github.com/gwpantazes/python101>.
 # Overview
 We'll be learning Python starting from the basics.
 
-0. Please download the lesson materials from the [Python101 Github Repository](https://github.com/gwpantazes/python101).
-    - Click on the green "Clone or Download button" to the right side, [or just use this link to download directly](https://github.com/gwpantazes/python101/archive/master.zip)
-    - Unpack the zip where you'd like to work. I suggest your `$HOME` directory (we'll get to that soon).
 1. First, we'll be learning how to get Python running.
 2. Second, we'll learn the fundamentals of the Command Line and the Python Interpreter.
 3. Third, we'll get into the basics of programming, general concepts that can be applied to any programming language, and how to work the with Python programming language specifically.
@@ -60,6 +58,18 @@ Python is a tool that can help solve problems of scale, automation and utility, 
 >
 > Python is great for a wide variety of data analysis. If the size of data is repeatably impacting your work, if your questions are getting too complex for a spreadsheet program to reasonable handle, or if there are alot of utility activities being done to handle the data, then Python becomes a useful tool.
 > [\[excel vs python\]](https://www.quora.com/When-should-I-use-excel-instead-of-python-for-data-analysis-and-vice-versa)
+
+# Setup and Materials
+Please download the lesson materials from the [Python101 Github Repository](https://github.com/gwpantazes/python101).
+  - Click on the green "Clone or Download button" to the right side, [or just use this link to download directly](https://github.com/gwpantazes/python101/archive/master.zip)
+    - Unpack the zip where you'd like to work. I suggest your `$HOME` directory (we'll get to that soon).
+
+We'll be using a text editor to create files at some point. Some recommendations:
+- ***Recommended Text Editor:*** The [Atom text editor](https://atom.io/) is a nice cross-platform text editor for Windows and Mac.
+    - Windows users, you should also consider getting [Notepad++](https://notepad-plus-plus.org/) which is an awesome replacement for the existing Windows stock text editor.
+    - Mac users, you should consider getting [TextWrangler](https://itunes.apple.com/us/app/textwrangler/id404010395?mt=12) which is an awesome text editor.
+        - Mac users should **not** use the TextEdit application, as it saves in rich text which is not a good thing for programming.
+- ***Not recommended for beginners:*** Advanced options are `nano`, `emacs`, and `vi` that you can run in the command line.
 
 # Installing Python
 1. Go to <https://www.python.org/>
