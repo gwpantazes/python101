@@ -1,11 +1,12 @@
-# Python 101 (for scientists)
-Welcome to Python 101 (for scientists), a guided lesson going from absolute beginner to making a simple data crunching program in Python.
+# Python 101
+Welcome to Python 101, a guided lesson going from absolute beginner to making a simple data crunching program in Python.
 
 We will be learning the basics of Python 3. This lesson will take about 2 hours. We'll cover absolute basics up through file reading. By the end, you’ll be a pro in the fundamentals of Python!
 
+This lesson can be found on Github at <https://github.com/gwpantazes/python101>.
+
 # Table of Contents
 - [Overview](#overview)
-    - [Big Picture: Why does Python matter?](#big-picture)
 - [Installing Python](#installing-python)
 - [The Command Line](#the-command-line)
 - [The Python Interpreter](#the-python-interpreter)
@@ -24,6 +25,9 @@ We will be learning the basics of Python 3. This lesson will take about 2 hours.
 # Overview
 We'll be learning Python starting from the basics.
 
+0. Please download the lesson materials from the [Python101 Github Repository](https://github.com/gwpantazes/python101).
+    - Click on the green "Clone or Download button" to the right side, [or just use this link to download directly](https://github.com/gwpantazes/python101/archive/master.zip)
+    - Unpack the zip where you'd like to work. I suggest your `$HOME` directory (we'll get to that soon).
 1. First, we'll be learning how to get Python running.
 2. Second, we'll learn the fundamentals of the Command Line and the Python Interpreter.
 3. Third, we'll get into the basics of programming, general concepts that can be applied to any programming language, and how to work the with Python programming language specifically.
@@ -67,12 +71,20 @@ Python is a tool that can help solve problems of scale, automation and utility, 
     - Make sure that if the installer offers to add Python to your `PATH`, you agree. Otherwise, we will have to add the Python installation directory to the `PATH` it manually.
         - What's the `PATH`? The `PATH` environment variable is a list of locations your shell will check when you try to run a command in the command line. See [The Command Line](#the-command-line).
 
+[Using Python3 with Windows, and Installation Instructions](https://docs.python.org/3/using/windows.html)
+[Using Python3 with Unix, and Installation Instructions](https://docs.python.org/3/using/unix.html)
+
 # The Command Line
 The command line is the window for a programmer to access the heart of a computer.
 
 Typical everyday applications using the mouse and on screen buttons are examples of a GUI (Graphical User Interface).
 
 Instead of a GUI, the Command Line is a CLI (Command Line Interface). We'll be typing commands and hitting the Enter/Return key to send commands to the shell.
+
+Let's open up your command line application:
+| Mac | Windows |
+| --- | ------- |
+| *Terminal* | *PowerShell* if available, otherwise *Command Prompt* |
 
 ***Try it:*** Type in the following command into the command line
 ```shell
@@ -101,6 +113,7 @@ Here are some absolutely essential CLI commands we'll be using.
         george@testers-MacBook-Pro:~$ echo "PATH variable: $PATH"
         PATH variable: /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/george/Library/Android/sdk/build-tools:/Users/george/Library/Android/sdk/platform-tools:/Users/george/Library/Android/sdk/tools:/usr/local/share/npm/bin/:/Users/george/.rvm/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin
         ```
+    - If you haven't unpacked the Python101 materials zip yet, I suggest you extract it in the `$HOME` directory so it looks like: `<Your $HOME Directory Here>/python101`
 - `pwd`: "Print Working Directory"
     - Output the current working directory of the shell (where you currently are)
     - ***Try it:***
@@ -213,27 +226,45 @@ Here are some absolutely essential CLI commands we'll be using.
     - Searching Google for the answer is an essential tool.
 
 # The Python Interpreter
-Let's boot up python! Python can either interpret new commands one the fly or run scripts you've already written.
-  - Writing commands on the fly in the interpreter is great for experimentation and prototyping new stuff.
-  - Running pre-written scripts is much faster and easier to re-run the same funcionality. You don't have to type in the same thing twice!
+Let's start using Python! Python can either interpret new commands one the fly or run scripts you've already written.
+  - Writing commands on the fly in the interpreter is great for experimentation and prototyping new ideas.
+  - Running pre-written scripts is much faster and easier to run the same script again and again. You don't have to type in the same thing twice!
 
-Let's start with writing some commands on the fly with the Pyhon Intepreter, which from now on we'll just call "the interpreter".
+Let's start with writing some commands on the fly with the Python Intepreter, which from now on we'll just call "the interpreter". After, let's write and run some scripts from Python script files.
 
 ## Starting the Interpreter
-We'll start the interpreter in *the shell*, which depends on which operating system you're on.
+Starting the interpreter in your command line shell depends on which OS (operating system) you are using (Unix vs Windows).
 
-In your command line enter `python3` if you're Unix, or `py` if you're Windows.
+> **Note:** Mac OS computers are Unix compliant. Windows 10 64-bit machines are just beginning to support Unix compliance in developer mode without relying on emulation. And of course, any flavor of Linux OS is *Unix-like* (practically 100% Unix compliant).
+
+We'll start the interpreter in the shell, which depends on which operating system you're on.
+
+In your command line, enter based on your Operating System:
+
+| Unix      | Windows |
+|-----------|---------|
+| `python3` | `py -3` |
+
+> **NOTE:** Unix names Python3 differently than Python2 in order to differentiate the versions. On its own, Python2 would simply be named `python` in the command line.
+>
+> Windows does something a little funnier: when you isntall Python 3 first, and Python2 second, Python3 installed the `py` helper script
+
 When the Python interpreter boots up, it should output some starting information for you. See the following Unix and Windows examples for what to expect.
 
-### Unix (Mac Terminal, `BASH` Shell)
+***Unix (Mac Terminal, `BASH` Shell)***
 ```shell
-george@testers-MacBook-Pro:~$ python3
+george@testers-MacBook-Pro:~/python101$ python
+Python 2.7.12 (default, Aug  5 2016, 10:48:32)
+[GCC 4.2.1 Compatible Apple LLVM 7.3.0 (clang-703.0.31)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> quit()
+george@testers-MacBook-Pro:~/python101$ python3
 Python 3.6.1 (v3.6.1:69c0db5050, Mar 21 2017, 01:21:04)
 [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
-### Windows (Command Prompt)
+***Windows (Command Prompt)***
 ```shell
 Windows PowerShell
 Copyright (C) 2016 Microsoft Corporation. All rights reserved.
@@ -249,45 +280,113 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
-## How do I exit the interpreter?
+***How do I exit the interpreter?***
 If you're in the interpreter and you want to get out, use the Python `quit()` function and hit enter.
-```Python
+```shell
 Python 3.6.1 (v3.6.1:69c0db5050, Mar 21 2017, 01:21:04)
 [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>> quit()
 george@testers-MacBook-Pro:~/python101$
 ```
-Alternatively, you can close the entire terminal window, but that is closing the entire shell, not just the interpreter running *inside* the shell.
+Alternatively, you can close the entire shell application window. Since it might be impractical to close the whole shell, it's better practice to just close the interpreter running *inside* the shell.
 
 ## Print
-The `print()` statement will be your best friend while programming.
-Do you want to show the user some output? `print()` it.
-Want to debug why your programming isn't working? Go ahead and `print()` the value
+The `print()` statement will be your best friend while programming. Just like `echo` in bash, it prints output to the screen for you to see.
+
+Want to debug why your programming isn't working? Go ahead and `print()` the value you're confused by.
+
+***Try it:***
+```python
+>>> print("Hello world!")
+Hello world!
+```
+Good job! You just wrote a Python interpreted
+
+## Comments (Ignoring code)
+If you want to write something into Python and have the intepreter ignore it, put a `#` hash symbol and anything following will not be run. This works both in the intepreter and in scripts.
+
+***Try it:***
+```python
+>>> # This is a code comment, it won't be run!
+>>> # print("This won't print.")
+>>>
+```
+
+It's very useful and highly recommended to leave comments for yourself as you are coding script files! Writing comments for what you plan to do in "plain language" (not code) is extremely helpful to structure your code; this abstraction is called *Pseudocode*. Write commented pseudocode to plan your program, and leave "plain language" documentation for the long term.
+
+Also, leaving helpful reminders explaining why you are doing something can save you time when you read through your code in a few months!
+
+```python
+""" Multiline strings can be written
+    using three "s, and are often used
+    as documentation.
+"""
+```
 
 ## The Interpreter as a Calculator
 Let's try a few different things we can do with the Interpreter, which can easily act as a calculator.
 
-```
->>> 1 + 1
+***Try it:***
+```python
+>>> 1 + 1       # Simple addition
 2
->>> 4 - 15
--11
->>> 2 * 4
-8
->>> 9 / 3
-3.0
+>>> 8 - 1       # Simple subtraction
+7
+>>> 5 - 14      # Negative numbers are no problem
+-9
+>>> 10 * 2      # Simple multiplication
+20
+>>> 35 / 5      # Simple division. Notice the result is a floating point number, not a whole integer. Normal division always returns a float.
+7.0
+>>> 22 / 7      # Let's divide something a bit more complicated
+3.142857142857143
+>>> 8/0         # Oops. Dividing by zero throws an error.
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ZeroDivisionError: division by zero
+>>> 9 * .2      # Multiply by a float, get a float.
+1.8
+>>> 1 * 1.0     # Really, I wasn't kidding.
+1.0
+>>> 5 + 3 * 6       # PEMDAS Order of operations means multiplication comes first
+23
+>>> (5 + 3) * 6     # But Parentheses enforce precedence, just like in PEMDAS
+48
+>>> 5 // 3      # Integer division truncates to whole digits, discarding the remainder
+1
+>>> 5.0 // 3.0  # Works for floats too
+1.0
+>>> -5 // 3     # Works for negatives too. Increased
+-2
+>>> 7 % 3       # The Modulus operator only returns the remainder
+1
+```
+Python can do fancier math expressions as well, such as powers, logs, square roots, etc. Most complex functions require importing standard or new libraries, since Python only has a few key functions built in.
 
->>> (1 + 2.5) * .5
-1.75
->>>
+***Try it:***
+```python
+>>> 2**3      # Exponents are built-in and don't need a library
+8
+>>> import math     # Import the math standard library that comes with Python
+>>> math.sqrt(100)  # Square Root is found in the math library
+10.0
+>>> math.log(9)     # Log defaults to base e
+2.1972245773362196
+>>> math.log(9, 3)  # By looking in the docs, we find out we can change the base easily by adding another parameter
+2.0
+>>> piVariable = math.pi    # Store the result in a variable
+>>> print(piVariable * 3 + 5 / 2)   # Expressions can be used as arguments
 ```
 
 ## Running Python Scripts
-Let's run a Hello World script.
+Let's run Python code from scripts.
+
+1. `quit()` the interpreter to return to the command line.
+2. Using your respective python command ()`python3` or `py -3`, whichever you used to start the interpreter), let's call a script file.
 
 # Programming Fundamentals
-Let's cover a few general concepts that every programming language has. These fundamental building blocks will allow us to build all possible programs.
+Let's cover a few general programming concepts. These are fundamental building blocks that allow us to build any program.
 
 - Data Types
 - Expressions
@@ -296,15 +395,17 @@ Let's cover a few general concepts that every programming language has. These fu
 - Loops
 
 ## Data Types
-- Numbers
-- Strings
-- other types
+Python has a few built-in primitive data types you can use out of the box. These types fall into categories of numeric types, sequences, sets, and mappings.
+    - `boolean`
 
 
 ## Expressions
 Here are some expressions:
 ```
->>> 1
+>>> 1       # A single numeric constant is an expression with the return type of integer
+1
+>>> 1.0 + 1     # Returns a float
+2.0
 >>> "This string is an expression, albeit a simple one"
 ```
 
@@ -314,16 +415,29 @@ Here are some expressions:
 ## Data Structures
 In order to compose
 
-### Array
-Arrays are *immutable*, ordered lists of like elements.
+### Lists / Array
+> A list or sequence is an abstract data type that represents a countable number of ordered values, where the same value may occur more than once. [\[source\]](https://en.wikipedia.org/wiki/List_(abstract_data_type))
+
+Arrays are ordered lists of similar/like elements. In Python, we approximate arrays with Lists.
+
+, while in Python, the built-in List data type is ***mutable***. ***Immutable* means (unchangeable object) is an object whose state cannot be modified after it is created
 
 For example:
 ```python
-
+>>> a = [1,2,3,4,5,6,7,8]   # Make our list
+>>> a
+[1, 2, 3, 4, 5, 6, 7, 8]
+>>> a[0]    # Python uses zero based indices. Index 0 is the "first" element.
+1
+>>> a[7]    # Because of the zero base, the final index = size of list - 1
+8
+>>> a[8]    # If we try to access the element at [size of list], we get an out of range error
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: list index out of range
 ```
 
-### List
-Lists are *mutable*
+We can access elements of a list by numeric index.
 
 
 # Programming with Python
@@ -331,14 +445,85 @@ A highly recommended overview of how Python works can be found at [Learn Python 
 
 ## Python Data Structures
 - Lists
-- Dictionaries
 - Tuples
+- Dictionaries
+
 
 ### Lists
+Lists, as described before, are ordered sequences of values.
 
-## List Manipulation (Slicing)
+Python lists can hold anything, even other lists.
 
+***Try it:***
+```python
+>>> z = ["apple", 42, 3.07, ["nested", "list"], None]
+>>> z
+['apple', 42, 3.07, ['nested', 'list'], None]
+>>> z[-1]       # Note that a return type of None doesn't return anything and thus doesn't print anything
+>>> z[-2]           # Access the nested list, which is itself just one element within z
+['nested', 'list']
+```
 
+### Tuples
+Tuples are just like lists, but they are ***immutable*** meaning they are unchangeable after they are created.
+
+A classic example of a tuple is a cartesian point `(x,y)`.
+***Try it:***
+```python
+>>> point = (3,4)   # Tuples denoted by parentheses (although parens are optional)
+>>> point[0]        # Accessing element
+3
+>>> point[2]        # Same types of range mistakes can be made, same as lists
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: tuple index out of range
+>>> point[0], point[1]
+(3, 4)
+>>> point[0], point[1], 7.45, "apple"   # Form tuples on the fly by using commas
+(3, 4, 7.45, "apple")
+```
+
+#### List Manipulation (Slicing)
+Python has built in list slicing, adding a `:` colon operator in the existing list access `[]` square bracket operator.
+
+```python
+a[start:end] # get a list of the items from start through end-1
+a[start:]    # get a list of the items from start through the rest of the array
+a[:end]      # get a list of the items from the beginning through end-1
+a[:]         # a copy of the whole array
+```
+There is also the step value (default step is `1`), which can be appended and used with any of the above slices:
+```python
+a[start:end:step] # start through end - 1, by step
+```
+The key point to remember is that the `:end` value represents the first value that is not in the selected slice. So, the difference beween `end` and `start` is the number of elements selected (if step is 1, the default).
+
+If `start` or `end` are a negative number, it means it counts from the end of the array instead of the beginning. So:
+```python
+a[-1]    # last item in the array
+a[-2:]   # last two items in the array
+a[:-2]   # everything except the last two items
+```
+
+***Try it:***
+```python
+>>> a = [1,2,3,4,5,6,7,8]   # Make our list
+>>> a[1:4]                  # Select the 2nd element through the 3rd. Inclusive start, exclusive end.
+[2, 3, 4]
+>>> a[::-1]                 # Reverse the list by choosing the whole array, with a step of -1
+[8, 7, 6, 5, 4, 3, 2, 1]
+>>> a[:-1]              # Common mistake: What if we tried to reverse an array like this? Doesn't work... This selects from the array beginning to 1 from the end
+[1, 2, 3, 4, 5, 6, 7]
+>>> a[4:1]              # So what if we want a slice that is also reversed? This doesn't work...
+[]
+>>> a[1:4:-1]           # What about specifying a -1 step? Nope...
+[]
+>>> a[4:1:-1]           # Now we've got it! Set the -1 step, and start high to end low in order to match the step.
+[5, 4, 3]
+```
+List slicing and manipulation is a powerful feature of Python which we can take advantage of when processing data columns.
+
+> Explanation and examples of list slicing came from [this amazing StackOverflow answer on Python list slicing](https://stackoverflow.com/a/509295/2291928)
 
 ## String formatting
 https://pyformat.info/
@@ -366,10 +551,12 @@ Reading the file like that. Let's just do one line at a time.
 ```
 Notice that the newline character `\n` is kept in each line. Python detects that character as the end of a line, but leaves it for you to strip off yourself.
 
-## Slicing Lists and Strings
-
 ## Reading a CSV File
-https://docs.python.org/3.6/library/csv.html
+Comma-Seqarated Value (CSV) files are a common way to store spreadsheet data in a simple text format. Each new line of the file is a spreadsheet row, and columns are *delimited* by commas.
+
+Python offers a standard library for us to consume csv files called `csv`. We can look at each row of a csv file, one at a time, using a csv reader.
+
+[Python CSV Library Documentation](https://docs.python.org/3.6/library/csv.html)
 
 ```python
 >>> import csv
@@ -386,12 +573,10 @@ https://docs.python.org/3.6/library/csv.html
 ```
 
 # Let's Make Something
-Now that we know how to do lots of cool things, let's program something real. Let's make a program which reads data from a CSV file and computes values from it.
+Now that we know how to do lots of cool things, let's use our new skills to program something neat. Let's make a program which reads data from a CSV file and computes values from it.
 
 # Where to Go From Here?
 Python has extensive libraries for Scientific Analysis and Computation.
-- [PyPi](https://pypi.python.org/pypi): The Python Package Index
-    - The Python Package Index is a repository of software for the Python programming language. Find a package you'd like to use in your program!
 - [NumPy](http://www.numpy.org/)
     - NumPy is the fundamental package for scientific computing with Python.
     - Useful things:
@@ -400,11 +585,15 @@ Python has extensive libraries for Scientific Analysis and Computation.
 - [SciPy](https://www.scipy.org/)
     - Python-based ecosystem of open-source software for mathematics, science, and engineering.
     - Includes NumPy!
+- RNA Sequencing Analysis: [READemption](https://github.com/konrad/READemption): a pipeline for the computational evaluation of RNA-Seq data
+    - Disclaimer: I'm not familiar with this tool, and there are other tools which can be run straight from the shell which you can feed data prepared with Python.
 - [Keras](https://keras.io/): Deep Learning library for Theano and TensorFlow
-- RNA Sequencing Analysis
-    - [READemption](https://github.com/konrad/READemption): a pipeline for the computational evaluation of RNA-Seq data]
 - [PyGame](www.pygame.org): Python game engine.
     - Useful for more than just games, PyGame can be used to visualize simulations.
+- [PyPi](https://pypi.python.org/pypi): The Python Package Index
+    - The Python Package Index is a repository of software for the Python programming language. Find a package you'd like to use in your program!
+
+Some Python distributions with all the goodies:
 - [Anaconda](https://www.continuum.io/downloads) data science platform
     - Includes NumPy, SciPy, and more
 - [Python(x,y)](http://python-xy.github.io/): A Scientific Python Distribution
@@ -412,7 +601,9 @@ Python has extensive libraries for Scientific Analysis and Computation.
 # Resources, Useful Links, and Sources
 - [Main Python Documentation](https://docs.python.org/3/)
 - [Python Tutorials](https://www.learnpython.org/)
-- [10 Minute Overview of Python](https://learnxinyminutes.com/docs/python/)
+- [Learn Python the Hard Way](https://learnpythonthehardway.org/book/ex1.html): Good tutorial to thoroughly learn Python from the beginning.
+- [Learn Python in Y Minutes](https://learnxinyminutes.com/docs/python/): 10 Minute Overview of Python
+- [Hitchhikder's Python Style Guide](http://python-guide-pt-br.readthedocs.io/en/latest/writing/style/)
 - [Popular Python Packages](https://pythontips.com/2013/07/30/20-python-libraries-you-cant-live-without/)
 - [Python Tutorial for Science from NYU](http://www.physics.nyu.edu/pine/pymanual/html/pymanMaster.html)
 - [Python Crash Course for Scientists](http://nbviewer.jupyter.org/gist/anonymous/5924718)
