@@ -1,9 +1,9 @@
 # Python 101
 Welcome to Python 101, a guided lesson going from absolute beginner to making a simple data crunching program in Python.
 
-We will be learning the basics of Python 3. This lesson will take about 2 hours. We'll cover absolute basics up through file reading. By the end, you’ll be a pro in the fundamentals of Python!
+We will be learning the basics of Python 3. This lesson will take about 2 hours. We'll cover absolute basics up through CSV file reading. By the end, you’ll be a pro in the fundamentals of Python!
 
-This lesson can be found on Github at <https://github.com/gwpantazes/python101>.
+This lesson and its materials can be found on Github at <https://github.com/gwpantazes/python101>.
 
 # Table of Contents
 - [Overview](#overview)
@@ -17,9 +17,10 @@ This lesson can be found on Github at <https://github.com/gwpantazes/python101>.
   - [Variables](#variables)
   - [Conditionals](#conditionals)
   - [Loops](#loops)
+  - [Data Structures](#data-structures)
 - [Programming with Python](#programming-with-python)
     - [Reading a CSV File](#reading-a-csv-file)
-- [Let's Make Something](#lets-make-something)
+- [Ready to Make Something](#ready-to-make-something)
 - [Where to go from here?](#where-to-go-from-here)
 - [Resources, Useful Links, and Sources](#resources-useful-links-and-sources)
 
@@ -28,29 +29,29 @@ We'll be learning Python starting from the basics.
 
 1. First, we'll be learning how to get Python running.
 2. Second, we'll learn the fundamentals of the Command Line and the Python Interpreter.
-3. Third, we'll get into the basics of programming, general concepts that can be applied to any programming language, and how to work the with Python programming language specifically.
+3. Third, we'll get into the basics of programming and how to program with Python.
 4. Finally, we'll write a program to load and run computations on data.
 
-By the end of the lesson, you should have a firm grasp on how Pyhon can be used to run computations
+By the end of the lesson, you should feel comfortable running computations on data with Python.
 
 ## Big Picture: Why does Python matter?
-As a general programming tool, Python is a simple and useful general scripting language which can accomplish most anything you'd ever like to program.
+As a general programming tool, Python is a simple and useful general scripting language which can accomplish most anything you'd ever like to program. The language is like a programming swiss-army knife; it's utility is useful in many diverse situations, and it's great for small programming tasks.
 
 Python's website says it best:
 > Python is an interpreted, object-oriented, high-level programming language with dynamic semantics. Its high-level built in data structures, combined with dynamic typing and dynamic binding, make it very attractive for Rapid Application Development, as well as for use as a scripting or glue language to connect existing components together. Python's simple, easy to learn syntax emphasizes readability and therefore reduces the cost of program maintenance. Python supports modules and packages, which encourages program modularity and code reuse. The Python interpreter and the extensive standard library are available in source or binary form without charge for all major platforms, and can be freely distributed. [\[source\]](https://www.python.org/doc/essays/blurb/)
 
-As a bioinformatics tool, Pyhon already has a widge range of free math, scientific libraries for analysis and data processing. These libraries should allow you to:
+As a bioinformatics tool, Python already has a widge range of free math, scientific libraries for analysis and data processing. These libraries should allow you to:
 - Load and work with your own large data files
-- Compute complex math
+- Compute complex math or run data analysis
 - Process and analyze RNA Sequencing data
 - Run machine learning algorithms on your data
 
 See the [Where to go from here?](#where-to-go-from-here) for some inspiration.
 
 ### Why should I use Python vs a spreadsheet application like Excel?
-Let's address a common question: Why should I use Pyhon? Why wouldn't I just use Excel?
+Let's address a common question: Why should I use Python? Why wouldn't I just use Excel?
 
-***The answer***: Don't stop using Excel! Pyhon is just a tool. We can use both for their strong points.
+***The answer***: Don't stop using Excel! Python is just a tool. We can use both for their strong points.
 
 Python is a tool that can help solve problems of scale, automation and utility, and other pain points that might come along with large or complex datasets.
 
@@ -61,8 +62,9 @@ Python is a tool that can help solve problems of scale, automation and utility, 
 
 # Setup and Materials
 Please download the lesson materials from the [Python101 Github Repository](https://github.com/gwpantazes/python101).
-  - Click on the green "Clone or Download button" to the right side, [or just use this link to download directly](https://github.com/gwpantazes/python101/archive/master.zip)
+- Click on the green "Clone or Download button" to the right side, [or just use this link to download directly](https://github.com/gwpantazes/python101/archive/master.zip)
     - Unpack the zip where you'd like to work. I suggest your `$HOME` directory (we'll get to that soon).
+- Please follow along with README.md, which is also visible from the main project page.
 
 We'll be using a text editor to create files at some point. Some recommendations:
 - ***Recommended Text Editor:*** The [Atom text editor](https://atom.io/) is a nice cross-platform text editor for Windows and Mac.
@@ -70,19 +72,21 @@ We'll be using a text editor to create files at some point. Some recommendations
     - Mac users, you should consider getting [TextWrangler](https://itunes.apple.com/us/app/textwrangler/id404010395?mt=12) which is an awesome text editor.
         - Mac users should **not** use the TextEdit application, as it saves in rich text which is not a good thing for programming.
 - ***Not recommended for beginners:*** Advanced options are `nano`, `emacs`, and `vi` that you can run in the command line.
+- There's also the option to use the Python `idle3` shell and its built-in text editor. It works fine, but it's not the best thing you could choose. If you don't want to download any new software or use a command line text editor, this is a fine option.
 
 # Installing Python
 1. Go to <https://www.python.org/>
 2. Navigate to Downloads: <https://www.python.org/downloads/>
 3. Download the latest version of Python 3.
   - Python 3 is also often referred to as Python 3.x, because there are many minor release versions. Python 2.x is an earlier version that is very popular but is being phased out over time. There are a few [key differences and breaking changes](http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html) between Python 2 and Python 3.
-  - Python 2 is still commonly supported for legacy applications and libraries. Even so, at this point [it's best to start with Python 3](http://www.asmeurer.com/blog/posts/moving-away-from-python-2/), since [almost all libraries support Python 3](http://py3readiness.org/).
+  - Python 2 is still commonly supported for legacy applications and libraries. Even so, at this point it's best to [use Python 3 when starting new projects which don't rely on legacy code](http://www.asmeurer.com/blog/posts/moving-away-from-python-2/), since [almost all libraries support Python 3](http://py3readiness.org/).
 4. Run the downloaded Python installer and go through the installation process for your OS.
-    - Make sure that if the installer offers to add Python to your `PATH`, you agree. Otherwise, we will have to add the Python installation directory to the `PATH` it manually.
+    - Make sure that if the installer offers to add Python to your `PATH`, you agree. Otherwise, we will have to add the Python installation directory to the `PATH` manually which will be a pain for a beginner.
         - What's the `PATH`? The `PATH` environment variable is a list of locations your shell will check when you try to run a command in the command line. See [The Command Line](#the-command-line).
 
-[Using Python3 with Windows, and Installation Instructions](https://docs.python.org/3/using/windows.html)
-[Using Python3 with Unix, and Installation Instructions](https://docs.python.org/3/using/unix.html)
+In case of trouble, here are additional Installation Instructions:
+- [Using Python3 with Windows, and Installation Instructions](https://docs.python.org/3/using/windows.html)
+- [Using Python3 with Unix, and Installation Instructions](https://docs.python.org/3/using/unix.html)
 
 # The Command Line
 The command line is the window for a programmer to access the heart of a computer.
@@ -301,6 +305,11 @@ george@testers-MacBook-Pro:~/python101$
 ```
 Alternatively, you can close the entire shell application window. Since it might be impractical to close the whole shell, it's better practice to just close the interpreter running *inside* the shell.
 
+## IDLE Python Shell
+By running `idle3` in the command line, a hybrid GUI/CLI Python shell application will start called *IDLE*. This *IDLE* shell is largely the same as writing commands to the python interpreter in the command line, but has a few convenient things.
+
+It's your choice to use the command line or *IDLE* when running the interpreter. You can also take advantage of IDLE's text editor to write simple scripts. Be careful to save your scripts properly though, when working in IDLE.
+
 ## Print
 The `print()` statement will be your best friend while programming. Just like `echo` in bash, it prints output to the screen for you to see.
 
@@ -311,7 +320,9 @@ Want to debug why your programming isn't working? Go ahead and `print()` the val
 >>> print("Hello world!")
 Hello world!
 ```
-Good job! You just wrote a Python interpreted
+Good job! You just wrote a Python interpreted command, composed of the print function and a string constant. The print command returned nothing, but output the string to the screen.
+
+Lots of good things are happening! Let's continue!
 
 ## Comments (Ignoring code)
 If you want to write something into Python and have the intepreter ignore it, put a `#` hash symbol and anything following will not be run. This works both in the intepreter and in scripts.
@@ -333,6 +344,8 @@ Also, leaving helpful reminders explaining why you are doing something can save 
     as documentation.
 """
 ```
+
+This lesson will make use of comments to explain what code is doing.
 
 ## The Interpreter as a Calculator
 Let's try a few different things we can do with the Interpreter, which can easily act as a calculator.
@@ -430,8 +443,6 @@ In order to compose
 
 Arrays are ordered lists of similar/like elements. In Python, we approximate arrays with Lists.
 
-, while in Python, the built-in List data type is ***mutable***. ***Immutable* means (unchangeable object) is an object whose state cannot be modified after it is created
-
 For example:
 ```python
 >>> a = [1,2,3,4,5,6,7,8]   # Make our list
@@ -447,13 +458,13 @@ Traceback (most recent call last):
 IndexError: list index out of range
 ```
 
-We can access elements of a list by numeric index.
+We can access elements of a list by numeric index. We can also
 
 
 # Programming with Python
-A highly recommended overview of how Python works can be found at [Learn Python in Y Minutes](https://learnxinyminutes.com/docs/python3/).
+Now that we've learned the basics, let's get to doing thingsA highly recommended overview of how Python works can be found at [Learn Python in Y Minutes](https://learnxinyminutes.com/docs/python3/).
 
-## Python Data Structures
+## Data Structures
 - Lists
 - Tuples
 - Dictionaries
@@ -475,7 +486,7 @@ Python lists can hold anything, even other lists.
 ```
 
 ### Tuples
-Tuples are just like lists, but they are ***immutable*** meaning they are unchangeable after they are created.
+Tuples are just like lists, but they are ***immutable*** meaning they are unchangeable after they are created. Lists remain ***mutable*** after creation, meaning we can add, remove, or change elements. Because tuples are ***immutable***, we cannot make any of these modifications to an existing tuple. What we can do is compose a new one on the fly, though...
 
 A classic example of a tuple is a cartesian point `(x,y)`.
 ***Try it:***
@@ -536,7 +547,29 @@ List slicing and manipulation is a powerful feature of Python which we can take 
 > Explanation and examples of list slicing came from [this amazing StackOverflow answer on Python list slicing](https://stackoverflow.com/a/509295/2291928)
 
 ## String formatting
-https://pyformat.info/
+String formatting is pretty nice in Python. [See this Python string format tutorial for a tour.](https://pyformat.info/)
+
+The `.format()` method is called directly on a string, with its arguments *interpolated* into the format string. That sounds scary, but really it just means that items are inserted straight into the string where you want them, at the `{}` format string
+
+Let's quickly play around with it.
+
+***Try it:***
+```python
+>>> x = 7
+>>> y = 2.5
+>>> fruit = "apple"
+>>> # The default format string behavior inserts by ordered position
+>>> "This is a formatted string. x: {}, y: {}, My favorite food: {}".format(x, y, fruit)    # Format will return a new string with the values interpolated
+'This is a formatted string. x: 7, y: 2.5, My favorite food: apple'
+>>> "{a}, {fav}, {b}".format(a=x, b=y, fav=fruit)   # We can use named format specifiers
+'7, apple, 2.5'
+>>> "{1}, {0}, {fav}".format(x, y, fav=fruit)   # We can use position indices as well
+'2.5, 7, apple'
+>>> "{2}, {1}, {fav}".format(x, y, fav=fruit)   # Don't forget that positional indices are zero based
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: tuple index out of range
+```
 
 ## Reading from a file
 https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files
@@ -561,18 +594,127 @@ Reading the file like that. Let's just do one line at a time.
 ```
 Notice that the newline character `\n` is kept in each line. Python detects that character as the end of a line, but leaves it for you to strip off yourself.
 
+If we wanted to parse through this kind of output, we can use Python functions `split`, `strip`, and convert any values we need to the proper types.
+
+Let's just work with a single row's data to make it simple for ourselves. We will plug the logic into a script after we tinker.
+```python
+>>> # Let's work with the header row. Let's convert this messy string into a nice array.
+>>> row = '"","ID","V1","V2","V3","V4","V5","V6","V7","V8","V9","class"\n'
+>>> row.strip()         # strip removes whitespace from the beginning and end by default, although you can specify other characters
+'"","ID","V1","V2","V3","V4","V5","V6","V7","V8","V9","class"'
+>>> row                 # strip doesn't modify the existing string in place
+'"","ID","V1","V2","V3","V4","V5","V6","V7","V8","V9","class"\n'
+>>> # Most string operations return a new string, and don't modify the current string
+>>> row = row.strip()   # So let's make sure to store the result
+>>> row                 # Now the strip result is actually stored
+'"","ID","V1","V2","V3","V4","V5","V6","V7","V8","V9","class"'
+>>> rowArray = a.split(',') # Split delimits an array from a string. We're splitting on the comma character
+>>> rowArray            # We now have an array of strings
+['""', '"ID"', '"V1"', '"V2"', '"V3"', '"V4"', '"V5"', '"V6"', '"V7"', '"V8"', '"V9"', '"class"']
+>>> for col in rowArray:        # col is a local variable for just this for loop, a copy.
+...     col = col.strip("\"")   # When we modify col, nothing happens to the original
+...
+>>> rowArray                    # Nothing changed. So how do we modify our array?
+['""', '"ID"', '"V1"', '"V2"', '"V3"', '"V4"', '"V5"', '"V6"', '"V7"', '"V8"', '"V9"', '"class"']
+>>> for i in range(0, len(b)):
+...     b[i] = b[i].strip("\"")
+...
+>>> b       # Now the header row looks ready to work with
+['', 'ID', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'class']
+```
+
+Now that we've cleaned up the header row, let's look at a data row:
+
+```python
+>>> row = '"1","1000025",5,1,1,1,2,1,3,1,1,"benign"\n'  # Our sample data row
+>>> row = row.strip().split(',')    # Let's strip and split the array in one line
+>>> row                             # We still need to clean up those extra quotes
+['"1"', '"1000025"', '5', '1', '1', '1', '2', '1', '3', '1', '1', '"benign"']
+>>> for i in range(0, len(row)):    # So iterate through row indices
+...     row[i] = row[i].strip("\"") # to strip quotes and store the result in place
+...
+>>> row
+['1', '1000025', '5', '1', '1', '1', '2', '1', '3', '1', '1', 'benign']
+>>> for item in row:            # Let's check out our data
+...     print(item, type(item))
+...
+1 <class 'str'>
+1000025 <class 'str'>
+5 <class 'str'>
+1 <class 'str'>
+1 <class 'str'>
+1 <class 'str'>
+2 <class 'str'>
+1 <class 'str'>
+3 <class 'str'>
+1 <class 'str'>
+1 <class 'str'>
+benign <class 'str'>
+>>> for i in range(0, len(row)):
+...     row[i] = row[i].strip("\"")
+...
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+AttributeError: 'list' object has no attribute 'strip'
+>>> row
+['"1"', '"1000025"', '5', '1', '1', '1', '2', '1', '3', '1', '1', '"benign"']
+>>> for i in range(0, len(row)):
+...     row[i] = row[i].strip("\"")
+... row
+  File "<stdin>", line 3
+    row
+      ^
+SyntaxError: invalid syntax
+>>> for i in range(0, len(row)):
+...     row[i] = row[i].strip("\"")
+...
+>>> row
+['1', '1000025', '5', '1', '1', '1', '2', '1', '3', '1', '1', 'benign']
+>>> int(row[-1])    # If you try to convert things that aren't numbers to numbers, you'll get an error!
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: 'benign'
+>>> try:    # Luckily we can catch and deal with stuff like this
+...     value = int(row[-1])    # Try to store the result
+... except ValueError:  # If we encounter a ValueError
+...     print("ERROR. Not cool. Not cool at all.")  # Do whatever you like here instead, such as printing an message
+...
+ERROR. Not cool. Not cool at all.
+>>>
+```
+
+As you can see, it takes a bit of work to clean up data from a csv file "by hand".
+
+Maybe we can make this into a Python script so we don't have to run this in the interpreter?
+
+```python
+data = []
+with open("data/biopsy.csv") as datafile:
+    for row in datafile:
+        rowArray = row.strip().split(',')
+        for i in range(0, len(rowArray)):
+            if(rowArray[i])
+            rowArray[i] = rowArray[i].strip('"')
+        # Now we have a single row cleaned and ready
+        data.append(rowArray)
+print(data)
+```
+This should be a good start...
+See `code/10_readfile.py` for a working script solution for reading a file and parsing through values.
+
 ## Reading a CSV File
 Comma-Seqarated Value (CSV) files are a common way to store spreadsheet data in a simple text format. Each new line of the file is a spreadsheet row, and columns are *delimited* by commas.
 
-Python offers a standard library for us to consume csv files called `csv`. We can look at each row of a csv file, one at a time, using a csv reader.
+Python offers a standard library for us to consume csv files called `csv`. We can look at each row of a csv file, one at a time, using a csv reader. This is just a convenience class on top of the file reader we used before.
 
 [Python CSV Library Documentation](https://docs.python.org/3.6/library/csv.html)
 
+***Try it:***
 ```python
->>> import csv
->>> with open("data/biopsy.csv") as csvfile:
-...     reader = csv.reader(csvfile)
-...     for row in reader:
+>>> import csv                              # Use the CSV standard library
+>>> with open("data/biopsy.csv") as csvfile:# Lets open the csv file safely by using a with block, relatively from the root of the lesson
+...     reader = csv.reader(csvfile)        # Read from the csvfile
+...     for row in reader:                  # Iterate through each row
 ...             print(row)
 ...
 ['', 'ID', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'class']
@@ -582,8 +724,13 @@ Python offers a standard library for us to consume csv files called `csv`. We ca
 ... # Output truncated
 ```
 
-# Let's Make Something
-Now that we know how to do lots of cool things, let's use our new skills to program something neat. Let's make a program which reads data from a CSV file and computes values from it.
+See `code/11_read_csv.py` for a working script solution for reading through a csv file and parsing its values.
+
+# Ready to Make Something
+Now that we know how to do lots of cool things in Python, let's use our new skills to program something neat. Let's make a program which reads data from a CSV file and computes values from it.
+
+Refer to `code/20_average_biopsy_bugged.py` for the beginnings of something cool. But wait! This program has a bug! Oh no! We'll have to track it down and fix it.
+Solution can be found in `code/21_average_biopsy.py`.
 
 # Where to Go From Here?
 Python has extensive libraries for Scientific Analysis and Computation.
@@ -618,3 +765,4 @@ Some Python distributions with all the goodies:
 - [Python Tutorial for Science from NYU](http://www.physics.nyu.edu/pine/pymanual/html/pymanMaster.html)
 - [Python Crash Course for Scientists](http://nbviewer.jupyter.org/gist/anonymous/5924718)
 - [Sample Datasets](https://vincentarelbundock.github.io/Rdatasets/datasets.html)
+- [Python String Formatting](https://pyformat.info/)
