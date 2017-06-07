@@ -330,7 +330,8 @@ If you want to write something into Python and have the intepreter ignore it, pu
 ***Try it:***
 ```python
 >>> # This is a code comment, it won't be run!
->>> # print("This won't print.")
+... # print("This won't print.")
+...
 >>>
 ```
 
@@ -407,6 +408,21 @@ Let's run Python code from scripts.
 
 1. `quit()` the interpreter to return to the command line.
 2. Using your respective python command ()`python3` or `py -3`, whichever you used to start the interpreter), let's call a script file.
+3. Now lets run some scripts found in the `code` directory of the downloaded Python 101 materials.
+
+```shell
+george@testers-MacBook-Pro:~/python101$ python3 code/00_hello_world.py
+Hello World!
+george@testers-MacBook-Pro:~/python101$ python3 code/01_greetings.py
+Hello! What is your name? George
+Hello George
+george@testers-MacBook-Pro:~/python101$ python3 code/02_questions.py
+What is your name? George
+What is your age? 25
+George is 25 years old.
+```
+
+Awesome! We are now running python scripts like pros.
 
 # Programming Fundamentals
 Let's cover a few general programming concepts. These are fundamental building blocks that allow us to build any program.
@@ -419,31 +435,254 @@ Let's cover a few general programming concepts. These are fundamental building b
 
 ## Data Types
 Python has a few built-in primitive data types you can use out of the box. These types fall into categories of numeric types, sequences, sets, and mappings.
-    - `boolean`
+- `boolean`
+    - A boolean is a `True` or `False` value. These are extremely important for computers to decide what to do. Some examples of booleans:
+        - The primitive values `True` and `False`. Note the capitalization.
+        - Comparison operators produce booleans
+            - `3 > 1` returns `True` because 3 is greater than 1.
+            - `7 >= 11` returns `False` because 7 is not greater than or equal to 11.
+                - But `7 <= 11` returns `True` because 7 is less than or equal to 11.
+            - `1 == 0` returns `False` because 3 is not equivalent to 1.
+                - But check this out: both `1 == 1` and `1 == 1.0` return `True` because the numeric value of 1 is equivalent.
+            - `1 != 0` returns `True` because 1 is not equivalent to zero.
+        - The `not` keyword inverts a boolean:
+            - `not True` returns `False`
+            - `not False` returns `True`
+            - `not 1 == 0` returns `True` (works with expressions)
+- `string` values are sequences of characters. Some examples:
+    - `"apple"`
+    - `'m'`
+    - `"Toccata" + 'and' + "Fugue" + 'in D Minor'`
+- Numeric Types
+    - `int` type numbers are whole integers. In Python3 these can be as long as you like.
+        - If you convert to an int, the fractional part of the number gets be truncated away
+        - ***Try it:*** Convert to an int
+            ```python
+            >>> int("5")    # Strings can be converted no problem
+            5
+            >>> int(7.8)    # Floats get truncated
+            7
+            >>> int(-4)      # You can redundantly cast an int to an int, since -4 is still an int regardless of negative
+            -4
+            >>> int('a')    # But anything that is not a number will throw a value error
+            Traceback (most recent call last):
+              File "<stdin>", line 1, in <module>
+            ValueError: invalid literal for int() with base 10: 'a'
+            ```
+    - `float` type numbers have decimal parts and can grow very large or very small due to being based on scientific notation (uses exponents to achieve )
+        - `0.0`, `1.0`, `-1.0` are all floats even if they are equivalent to their respective whole ints
+- The `list` type looks like a sequence surrounded by `[]` square brackets. Examples of lists:
+    - `[1,2,3,4]`
+        - The same list built with the `range` keyword: `range(1, 5)`
+    - Lists can be composed of any objects: `["string", int("8"), 3.1415926535, ["inner", "list"]]`
+    - Strings are ***not*** lists by themselves: `"Strings are a sequence of characters and behave a lot like a list sometimes, but are not a list."`
+    - We'll cover lists in more detail in a few sections. See [Lists / Arrays](#lists-arrays)
+- The `dictionary` is composed of ***unordered*** key-value pairs. Values are accessed via their key. Anything can be a value, and anything can be a key.
+    - The key is used with the `[]` square bracket access operator, and can ***get*** or ***set*** the value.
+    - ***Try it:***
+        ```python
+        >>> dict = {}       # We can initialize an empty dictionary
+        >>> dict["anything here?"]  # But checking for something that isn't there will throw a KeyError
+        Traceback (most recent call last):
+          File "<stdin>", line 1, in <module>
+        KeyError: 'anything here?'
+        >>> # Let's add it in so we can find it
+        ... dict["anything here?"] = "Yep! Something is here!"
+        >>> dict["anything here?"] # We've found it!
+        'Yep! Something is here!'
+        >>> dict = {'jack': 4098, 'jill': 1043} # Overwrite the whole dictionary
+        >>> dict["anything here?"]  # Nope, not anymore...
+        Traceback (most recent call last):
+          File "<stdin>", line 1, in <module>
+        KeyError: 'anything here?'
+        >>> dict['jack']    # But we can find Jack
+        4098
+        >>> 'jill' in dict  # And check whether Jill is present
+        True
+        >>> del dict['jill']    # Delete Jill
+        >>> 'jill' in dict  # And she can no longer be found
+        False
+        ```
+    - A `set` is an unordered collection with no duplicate elements. In practice it behaves
+        - ***Try it:***
+            ```python
+            >>> basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
+            >>> print(basket)   # duplicates have been removed
+            {'orange', 'banana', 'pear', 'apple'}
+            >>> 'orange' in basket  # check membership
+            True
+            >>> 'crabgrass' in basket
+            False
+            ```
+- There are other types of objects, but they are beyond the scope of this lesson.
 
 
 ## Expressions
-Here are some expressions:
+Expressions are just composites of everything we learned so far. Expressions are single values, functions, or any group of values, operators, and functions that represent a complete thought and give one return value.
+
+This is an important idea because often, instead of just putting one item in a `print()`, for example, we can put expressions computing whatever we like as the argument.
+```python
+>>> import math
+>>> print("Twenty" + 'two' + "7" * 3, math.log(3), "And 2 formatted {}s to cap it off".format(type(str(1))))
+Twentytwo777 1.0986122886681098 And 2 formatted <class 'str'>s to cap it off
 ```
+
+Here are some examples of expressions:
+```python
 >>> 1       # A single numeric constant is an expression with the return type of integer
 1
 >>> 1.0 + 1     # Returns a float
 2.0
->>> "This string is an expression, albeit a simple one"
+>>> "This string is an expression, albeit a simple one consisting of only a single primitive value"
+'This string is an expression, albeit a simple one consisting of only a single primitive value'
+>>> type(print("print() is a function which returns nothing."))
+print() is a function which returns nothing.
+<class 'NoneType'>
 ```
 
 ## Variables
-## Conditionals
-## Loops
-## Data Structures
-In order to compose
+We can store the return value of any expression into a variable.
 
-### Lists / Array
+***Try it:***
+```python
+>>> x = 7   # Store something using '=' equals operator
+>>> x       # Access something
+7
+```
+
+You can name a variable whatever you like as long as it follows these rules:
+1. Variables names must start with a letter or an underscore, such as:
+    - `_underscore`
+    - `underscore_`
+2. The remainder of your variable name may consist of letters, numbers and underscores.
+    - `password1`
+    - `n00b`
+    - `un_der_scores`
+3. Names are case sensitive.
+    - `case_sensitive`, `CASE_SENSITIVE`, and `Case_Sensitive` are each a different variable.
+
+> Variable naming rules [\[source\]](https://thehelloworldprogram.com/python/python-variable-assignment-statements-rules-conventions-naming/) tutorial
+
+```python
+>>> Guido       # Accessing a variable that has not been made throws an error
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'Guido' is not defined
+>>> Guido = ""
+>>> Guido = False
+>>> Guido = 1
+>>> 0 = Guido               # Wrong way, variable always on the left side
+  File "<stdin>", line 1
+SyntaxError: can't assign to literal
+>>> '' = Guido              # You can't assign values to strings
+  File "<stdin>", line 1
+SyntaxError: can't assign to literal
+>>> False = Guido           # Nor can you override reserved words
+  File "<stdin>", line 1
+SyntaxError: can't assign to keyword
+>>> Guido           # But the value of the variable is maintained
+1
+```
+
+## Conditionals
+`if`, `elif`, and `else` statements control the flow of a program using boolean conditions.
+- They are evaluated sequentially from the top down. If a boolean condition is evaluated as `True`, the block under that `if`/`elif` will run.
+- If an `if` or `elif` conditional expression is found to be true `True` and the code in that block runs, no following conditions will be tested.
+- If no `if` or `elif` are `True`, then the `else` block code will run.
+- `else` always comes last and doesn't take an expression, since if the code reaches that position the else block is guaranteed to run.
+- `elif` and `else` are both optional.
+
+***Try it:***
+```python
+>>> x = 42
+>>> if x < 0:       # 42 isn't less than zero...
+...     x = 0       # So anything in here doesn't run
+...     print('Negative changed to zero')
+... elif x == 0:    # 42 isn't zero...
+...     print('Zero')
+... elif x == 1:    # 42 isn't 1...
+...     print('Single')
+... else:           # By reaching the else block, it will run!
+...     print('More')   # And we print "More"!
+...
+More
+>>> # Let's do another if statement with a different value
+>>> x = 0
+>>> if x < 0:       # 0 isn't less than zero...
+...     x = 0
+...     print('Negative changed to zero')
+... elif x == 0:    # 0 matches! Success
+...     print('Zero')   # Run this code block!!!
+... elif x == 1:    # We don't even bother checking if x is 1
+...     print('Single')     # So of course this doesn't run
+...                     # We don't need an else block!
+Zero
+>>> if True:                # Simplest possible if
+...     print("Victory")
+...
+Victory
+```
+
+## Loops
+
+While loops test a boolean condition and run whatever is inside the loop block if the condition is true.
+***Try it:***
+```python
+>> # Fibonacci series:
+... # the sum of two elements defines the next
+... a, b = 0, 1             # One-line assignment with commas
+>>> while b < 10:
+...     print(b)
+...     a, b = b, a + b     # One-line assignment with commas again
+...
+1
+1
+2
+3
+5
+8
+```
+
+For loops iterate over finite sequences of things, and can also conveniently declare a loop block variable.
+
+***Try it:***
+```python
+>>> # Measure some strings:
+... words = ['cat', 'window', 'defenestrate']
+>>> for w in words:     # in keyword lets us extract a single value at a time
+...     print(w, len(w))    # len() is a built-in function which returns the length of a sequence (string, list, etc)
+...
+cat 3
+window 6
+defenestrate 12
+>>> # And now let's loop over a range. This is a very typical for loop idiom.
+... range(0,10)
+range(0, 10)
+>>> for i in range(0,10):
+...     print("Loop", i)
+...
+Loop 0
+Loop 1
+Loop 2
+Loop 3
+Loop 4
+Loop 5
+Loop 6
+Loop 7
+Loop 8
+Loop 9
+```
+
+## Data Structures
+In order to compose cool programs and complex objects, we'll need to cover useful data structures. The main data structure we'll focus on is the `list` data type.
+
+### Lists / Arrays
 > A list or sequence is an abstract data type that represents a countable number of ordered values, where the same value may occur more than once. [\[source\]](https://en.wikipedia.org/wiki/List_(abstract_data_type))
 
-Arrays are ordered lists of similar/like elements. In Python, we approximate arrays with Lists.
+We've already discussed lists, so what about Arrays?
+Arrays are ordered lists of similar/like elements. In Python, we typically treat lists and arrays like they are the same thing (though it's more correct to always call it a list, *especially* if there are different types of elements or it is being dynamically resized).
 
-For example:
+***Try it:***
 ```python
 >>> a = [1,2,3,4,5,6,7,8]   # Make our list
 >>> a
@@ -456,24 +695,44 @@ For example:
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 IndexError: list index out of range
+>>> a[-1]   # But we can count from the end using negative indices
+8
+>>> a[-2]   # And the second to last
+7
+>>> a[-0]   # Negative zero is just zero. No surprises here...
+1
 ```
 
-We can access elements of a list by numeric index. We can also
+We can access elements of a list by numeric index. We can also iterate over lists very easily:
+
+***Try it:***
+```python
+>>> a = [1,2,3,4,5,6,7,8]
+>>> for num in a:      # in keyword lets us extract a single value from the list at a time
+...     print(num)
+...
+1
+2
+3
+4
+5
+6
+7
+8
+
+```
 
 
 # Programming with Python
 Now that we've learned the basics, let's get to doing thingsA highly recommended overview of how Python works can be found at [Learn Python in Y Minutes](https://learnxinyminutes.com/docs/python3/).
 
 ## Data Structures
-- Lists
-- Tuples
-- Dictionaries
-
+Time to go a bit more in depth on these Python data structures.
 
 ### Lists
 Lists, as described before, are ordered sequences of values.
 
-Python lists can hold anything, even other lists.
+Python lists can hold anything, even other lists. Lists can add, remove, and change elements.
 
 ***Try it:***
 ```python
@@ -483,6 +742,11 @@ Python lists can hold anything, even other lists.
 >>> z[-1]       # Note that a return type of None doesn't return anything and thus doesn't print anything
 >>> z[-2]           # Access the nested list, which is itself just one element within z
 ['nested', 'list']
+>>> z[2] = 999      # Let's change the 3rd element
+>>> z.append("NEW") # Add a new element to the end
+>>> del z[0]        # And delete the first element
+>>> z           # The list has been changed!
+[42, 999, ['nested', 'list'], None, 'NEW']
 ```
 
 ### Tuples
@@ -491,7 +755,7 @@ Tuples are just like lists, but they are ***immutable*** meaning they are unchan
 A classic example of a tuple is a cartesian point `(x,y)`.
 ***Try it:***
 ```python
->>> point = (3,4)   # Tuples denoted by parentheses (although parens are optional)
+>>> point = (3,4)   # Tuples stylistically denoted by parentheses (although parentheses are actually optional)
 >>> point[0]        # Accessing element
 3
 >>> point[2]        # Same types of range mistakes can be made, same as lists
@@ -559,7 +823,7 @@ Let's quickly play around with it.
 >>> y = 2.5
 >>> fruit = "apple"
 >>> # The default format string behavior inserts by ordered position
->>> "This is a formatted string. x: {}, y: {}, My favorite food: {}".format(x, y, fruit)    # Format will return a new string with the values interpolated
+... "This is a formatted string. x: {}, y: {}, My favorite food: {}".format(x, y, fruit)    # Format will return a new string with the values interpolated
 'This is a formatted string. x: 7, y: 2.5, My favorite food: apple'
 >>> "{a}, {fav}, {b}".format(a=x, b=y, fav=fruit)   # We can use named format specifiers
 '7, apple, 2.5'
@@ -599,13 +863,13 @@ If we wanted to parse through this kind of output, we can use Python functions `
 Let's just work with a single row's data to make it simple for ourselves. We will plug the logic into a script after we tinker.
 ```python
 >>> # Let's work with the header row. Let's convert this messy string into a nice array.
->>> row = '"","ID","V1","V2","V3","V4","V5","V6","V7","V8","V9","class"\n'
+... row = '"","ID","V1","V2","V3","V4","V5","V6","V7","V8","V9","class"\n'
 >>> row.strip()         # strip removes whitespace from the beginning and end by default, although you can specify other characters
 '"","ID","V1","V2","V3","V4","V5","V6","V7","V8","V9","class"'
 >>> row                 # strip doesn't modify the existing string in place
 '"","ID","V1","V2","V3","V4","V5","V6","V7","V8","V9","class"\n'
 >>> # Most string operations return a new string, and don't modify the current string
->>> row = row.strip()   # So let's make sure to store the result
+... row = row.strip()   # So let's make sure to store the result
 >>> row                 # Now the strip result is actually stored
 '"","ID","V1","V2","V3","V4","V5","V6","V7","V8","V9","class"'
 >>> rowArray = a.split(',') # Split delimits an array from a string. We're splitting on the comma character
