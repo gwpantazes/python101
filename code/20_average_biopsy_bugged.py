@@ -1,5 +1,4 @@
 import csv
-import statistics
 
 # There is a bug in this program. Can you catch it? Hint: It's an important piece of the data crunching algorithm.
 
@@ -48,8 +47,7 @@ for row in data:
             # It failed to convert to number, so skip back to the beginning of the for loop without summing
             continue
 
-        # value = int(v_fields[i])  # Convert to a number
-        # Sum on average_v in place. Notice we are converting to a number
+        # Sum on average_v in place.
         average_v[i] = average_v[i] + value
 
 print("V Field computed sums:", average_v)

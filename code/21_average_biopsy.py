@@ -1,5 +1,4 @@
 import csv
-import statistics
 
 # Header will be an array of the Header labels
 header = []
@@ -58,8 +57,7 @@ for row in data:
             total_offset_v[i] = total_offset_v[i] + 1
             continue
 
-        # value = int(v_fields[i])  # Convert to a number
-        # Sum on average_v in place. Notice we are converting to a number
+        # Sum on average_v in place.
         average_v[i] = average_v[i] + value
 
 print("V Field computed sums:", average_v)
